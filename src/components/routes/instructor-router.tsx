@@ -4,21 +4,21 @@ import RoleSwitcher from '../login/role-switcher';
 import { useAuth } from '~/context/use-Auth';
 import BasedLayout from '../layouts/Based-layout';
 
-export default function EmpleadoRouter() {
+export default function InstructorRouter() {
   const { role } = useAuth();
 
-  // Filtrar secciones para empleado
-  const empleadoSections = sections.filter(section => 
-    section.roles.includes('empleado') || 
-    (role === 'admin' && section.roles.includes('empleado'))
+  // Filtrar secciones para instructor
+  const instructorSections = sections.filter(section => 
+    section.roles.includes('instructor') || 
+    (role === 'admin' && section.roles.includes('instructor'))
   );
 
   return (
     <>
-      {role === 'admin' && <RoleSwitcher currentRole="empleado" />}
+      {role === 'admin' && <RoleSwitcher currentRole="instructor" />}
       <BasedLayout>
         <Switch>
-          {empleadoSections.map((section) => (
+          {instructorSections.map((section) => (
             <Route 
               key={section.href} 
               path={section.href} 
@@ -28,7 +28,7 @@ export default function EmpleadoRouter() {
             />
           ))}
           <Route>
-            <Redirect to="/empleado" />
+            <Redirect to="/instructor" />
           </Route>
         </Switch>
       </BasedLayout>

@@ -1,13 +1,16 @@
-import EmpleadoRoute from "./components/routes/empleado-routes";
-import EmpleadoPage from "./components/Empleado/empleado-page";
-import { Switch } from "wouter";  // Ensure you're using Switch
+import { MainRouter } from './components/routes/main-router';
+import { ThemeProvider } from './context/theme-provider';
+import { AuthProvider } from './context/auth-context';
 
 export default function App() {
-
   return (
-    <Switch>
-      <EmpleadoRoute path="/empleado" component={EmpleadoPage} />
-    </Switch>
+    <ThemeProvider>
+      <AuthProvider>
+        <MainRouter />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
+
+
 
