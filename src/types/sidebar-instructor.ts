@@ -1,14 +1,14 @@
 export const itemsInstructor = [
     {
       title: "Home",
-      url: "/dashboard",
+      url: "/instructor",
     },
     {
       title: "Mis cursos",
-      url: "/dashboard/mis_cursos",
+      url: "/mis_cursos",
     },
     {
       title: "Calendario",
-      url: "/dashboard/calendario",
+      url: "/calendario",
     }
   ];

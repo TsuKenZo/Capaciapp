@@ -11,38 +11,43 @@ import {
   } from "~/components/ui/sidebar";
   import { Link, useLocation } from "wouter";
   import clsx from "clsx";
-  import { SidebarItem } from "~/types/sidebar";
-  
+  import { useAuth } from "~/context/use-Auth";
+  import { getSectionsByRole } from "~/data/sections";
 
-  interface AppSidebarProps {
-    items: SidebarItem[];
-  }
   
-  export function AppSidebar({ items }: AppSidebarProps) {
+  export function AppSidebar() {
     const [location] = useLocation();
+    const { role } = useAuth();
+    const items = getSectionsByRole(role);
   
     return (
-      <Sidebar >
+      <Sidebar>
         <SidebarHeader>
+          <div className="p-4 text-xl font-semibold dark:text-white">
+            {role === 'admin' ? 'Panel Admin' : role === 'instructor' ? 'Panel Instructor' : 'Panel Empleado'}
+          </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Secciones</SidebarGroupLabel>
+            <SidebarGroupLabel>Navegación</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="space-y-1">
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
-                      isActive={location === item.url}
+                      isActive={location.startsWith(item.url)}
                       asChild
                       className={clsx(
-                        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all", 
+                        "flex items-center gap-3 rounded-lg px-3 py-2 transition-all",
                         {
-                          "text-white/50": location !== item.url,
+                          "bg-gray-200 dark:bg-gray-700": location.startsWith(item.url),
+                          "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800": 
+                            !location.startsWith(item.url),
                         }
                       )}
                     >
                       <Link href={item.url}>
+                        {item.icon}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
