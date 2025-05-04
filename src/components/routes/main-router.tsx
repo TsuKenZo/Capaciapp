@@ -12,22 +12,22 @@ import InstructorPage from '../Instructor/instructor-page';
 import MisCursosPageI from '../Instructor/mis-cursos-page';
 import CalendarioPageI from '../Instructor/Calendario-page';
 import BasedLayout from "../layouts/Based-layout";
+import AdminUsuariosPage from "../Admin/admin-usuarios-page";
+import AsistenciaPage from "../Instructor/Asistencias-page";
 import { JSX } from "react";
 
 export function MainRouter() {
   const { user, role } = useAuth();
 
-  // Layout principal que incluye el sidebar
   const LayoutWrapper = () => (
     <BasedLayout>
       <Outlet />
     </BasedLayout>
   );
 
-  // Protección de rutas por rol
   const ProtectedRoute = ({ children, roles }: { children: JSX.Element, roles: string[] }) => {
     if (!user) return <Navigate to="/login" />;
-    if (!roles.includes(role)) return <Navigate to="/" />;
+    if (!role || !roles.includes(role)) return <Navigate to="/" />;
     return children;
   };
 
@@ -43,7 +43,6 @@ export function MainRouter() {
   return (
     <Routes>
       <Route element={<LayoutWrapper />}>
-        {/* Rutas de Admin */}
         <Route path="/admin" element={
           <ProtectedRoute roles={['admin']}>
             <AdminPage />
@@ -51,7 +50,7 @@ export function MainRouter() {
         } />
         <Route path="/admin/gestionar_usuarios" element={
           <ProtectedRoute roles={['admin']}>
-            <AdminPage />
+            <AdminUsuariosPage />
           </ProtectedRoute>
         } />
         <Route path="/admin/gestionar_cursos" element={
@@ -60,7 +59,6 @@ export function MainRouter() {
           </ProtectedRoute>
         } />
 
-        {/* Rutas de Empleado */}
         <Route path="/empleado" element={
           <ProtectedRoute roles={['empleado', 'admin']}>
             <EmpleadoPage />
@@ -87,7 +85,6 @@ export function MainRouter() {
           </ProtectedRoute>
         } />
 
-        {/* Rutas de Instructor */}
         <Route path="/instructor" element={
           <ProtectedRoute roles={['instructor', 'admin']}>
             <InstructorPage />
@@ -103,8 +100,12 @@ export function MainRouter() {
             <CalendarioPageI />
           </ProtectedRoute>
         } />
+        <Route path="/instructor/asistencias" element={
+          <ProtectedRoute roles={['instructor', 'admin']}>
+            <AsistenciaPage />
+          </ProtectedRoute>
+        } />
 
-        {/* Redirección por defecto según rol */}
         <Route path="/" element={
           <Navigate to={
             role === 'admin' ? '/admin' :

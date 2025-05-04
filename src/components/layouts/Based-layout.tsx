@@ -7,9 +7,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 import { useLocation } from "wouter";
 import { Moon, Sun, User } from "lucide-react";
-import { Outlet } from 'react-router-dom';
 
-export default function BasedLayout() {
+export default function BasedLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { user, logout, role, switchRole } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [, navigate] = useLocation();
@@ -83,7 +86,7 @@ export default function BasedLayout() {
           </div>
         </header>
         <main className="flex-1 overflow-auto p-4 lg:p-6">
-          <Outlet></Outlet>
+          {children}
         </main>
       </div>
     </div>

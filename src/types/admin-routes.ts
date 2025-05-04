@@ -1,8 +1,7 @@
 import { 
     HomeIcon, 
     Users, 
-    BookOpen,
-    Settings
+    BookOpen
   } from "lucide-react";
   
 
@@ -21,10 +20,5 @@ import {
       title: "Gestionar Cursos",
       url: "/admin/gestionar_cursos",
       icon: BookOpen
-    },
-    {
-      title: "Configuración",
-      url: "/admin/configuracion",
-      icon: Settings
     }
 ];

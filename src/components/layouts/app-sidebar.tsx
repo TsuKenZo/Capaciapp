@@ -24,7 +24,6 @@ export function AppSidebar() {
                role === 'instructor' ? itemsInstructor : 
                itemsEmpleados;
 
-  // Función para determinar si la ruta está activa
   const isActive = (path: string) => {
     return location.pathname.startsWith(path);
   };
