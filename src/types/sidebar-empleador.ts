@@ -1,22 +1,35 @@
+import { 
+  Home, 
+  Book, 
+  Notebook, 
+  BookOpen, 
+  Calendar 
+} from "lucide-react";
+
 export const itemsEmpleados = [
-    {
-      title: "Home",
-      url: "/empleado",
-    },
-    {
-      title: "Mis cursos",
-      url: "/mis_cursos",
-    },
-    {
-      title: "Notas cursos",
-      url: "/notas_cursos",
-    },
-    {
-      title: "Catalogo de cursos",
-      url: "/catalogo_de_cursos",
-    },
-    {
-      title: "Calendario",
-      url: "/calendario",
-    }
-  ];
+  {
+    title: "Inicio",
+    url: "/empleado",
+    icon: Home
+  },
+  {
+    title: "Mis cursos",
+    url: "/empleado/mis_cursos",
+    icon: Book
+  },
+  {
+    title: "Notas cursos",
+    url: "/empleado/notas_cursos",
+    icon: Notebook
+  },
+  {
+    title: "Catálogo de cursos",
+    url: "/empleado/catalogo_de_cursos",
+    icon: BookOpen
+  },
+  {
+    title: "Calendario",
+    url: "/empleado/calendario",
+    icon: Calendar
+  }
+];

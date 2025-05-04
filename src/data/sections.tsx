@@ -26,35 +26,35 @@ export const sections: Section[] = [
     href: "/empleado",
     icon: <Home className="size-4"/>,
     component: EmpleadoPage,
-    roles: ['empleado', 'admin']
+    roles: ['empleado']
   },
   {
     name: "Mis Cursos",
-    href: "/mis_cursos",
+    href: "/empleado/mis_cursos",
     icon: <Book className="size-4"/>,
     component: MisCursosPage,
-    roles: ['empleado', 'admin']
+    roles: ['empleado']
   },
   {
     name: "Notas Cursos",
-    href: "/notas_cursos",
+    href: "/empleado/notas_cursos",
     icon: <Notebook className="size-4"/>,
     component: NotasPage,
-    roles: ['empleado', 'admin']
+    roles: ['empleado']
   },
   {
     name: "Catálogo de Cursos",
-    href: "/catalogo_de_cursos",
+    href: "/empleado/catalogo_de_cursos",
     icon: <BookOpen className="size-4"/>,
     component: CatalogoPage,
-    roles: ['empleado', 'admin']
+    roles: ['empleado']
   },
   {
     name: "Calendario",
-    href: "/calendario",
+    href: "/empleado/calendario",
     icon: <Calendar className="size-4"/>,
     component: CalendarioPage,
-    roles: ['empleado', 'admin']
+    roles: ['empleado']
   },
 
   // Secciones de instructor
@@ -63,34 +63,34 @@ export const sections: Section[] = [
     href: "/instructor",
     icon: <Home className="size-4"/>,
     component: InstructorPage,
-    roles: ['instructor', 'admin']
+    roles: ['instructor']
   },
   {
     name: "Mis Cursos",
-    href: "/mis_cursos",
+    href: "/instructor/mis_cursos",
     icon: <Book className="size-4"/>,
     component: MisCursosPageI,
-    roles: ['instructor', 'admin']
+    roles: ['instructor']
   },
   {
     name: "Calendario",
-    href: "/calendario",
+    href: "/instructor/calendario",
     icon: <Calendar className="size-4"/>,
     component: CalendarioPageI,
-    roles: ['instructor', 'admin']
+    roles: ['instructor']
   },
 
   // Secciones de admin
   {
-    name: "Administración",
-    href: "/admin",
+    name: "Gestionar Usuarios",
+    href: "/admin/gestionar_usuarios",
     icon: <Settings className="size-4"/>,
     component: AdminPage,
     roles: ['admin']
   },
   {
     name: "Gestionar Cursos",
-    href: "/admin/cursos",
+    href: "/admin/gestionar_cursos",
     icon: <BookOpen className="size-4"/>,
     component: AdminCursosPage,
     roles: ['admin']

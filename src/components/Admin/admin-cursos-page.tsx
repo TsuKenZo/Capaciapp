@@ -1,11 +1,11 @@
-import BasedLayout from "../layouts/Based-layout";
+
 import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { PlusCircle } from "lucide-react";
 
 export default function AdminCursosPage() {
   return (
-    <BasedLayout>
+
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Catálogo de Cursos</CardTitle>
@@ -28,6 +28,6 @@ export default function AdminCursosPage() {
           </div>
         </CardContent>
       </Card>
-    </BasedLayout>
+
   );
 }
