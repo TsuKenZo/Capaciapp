@@ -38,7 +38,7 @@ export default function AdminUsuariosPage() {
     setNewUser(prev => ({ ...prev, [name]: value }));
   };
 
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newUser.password) {
@@ -57,7 +57,7 @@ export default function AdminUsuariosPage() {
         role: newUser.role,
         password: newUser.password,
       });
-      
+
       setNewUser({
         username: "",
         email: "",
@@ -65,7 +65,7 @@ export default function AdminUsuariosPage() {
         password: "",
       });
       setOpen(false);
-      
+
       toast({
         title: "Usuario creado",
         description: `El usuario ${newUser.username} ha sido registrado exitosamente`,

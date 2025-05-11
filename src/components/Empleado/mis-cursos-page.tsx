@@ -13,7 +13,7 @@ export default function MisCursosPage() {
   return (
     <div className="p-4 space-y-6">
       <h1 className="text-2xl font-bold">Mis cursos</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {cursosInscritos.length === 0 ? (
           <p>No estás inscrito en ningún curso</p>

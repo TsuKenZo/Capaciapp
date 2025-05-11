@@ -39,7 +39,7 @@ export default function CalendarioPage() {
   return (
     <div className="p-4 space-y-6">
       <h1 className="text-2xl font-bold">Calendario</h1>
-      
+
       <Calendar
         mode="single"
         selected={date}

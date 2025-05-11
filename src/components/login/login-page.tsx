@@ -33,7 +33,7 @@ export default function LoginPage() {
         if (!success) {
           setError('Credenciales incorrectas');
         } else {
-          navigate('/'); 
+          navigate('/');
         }
       }
     } catch (err) {
@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md mx-auto"> 
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md mx-auto">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-white">
           {isRegistering ? 'Registrarse' : 'Iniciar Sesión'}
         </h1>

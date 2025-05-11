@@ -1,9 +1,9 @@
-import { 
-  Home, 
-  Book, 
-  Notebook, 
-  BookOpen, 
-  Calendar 
+import {
+  Home,
+  Book,
+  Notebook,
+  BookOpen,
+  Calendar
 } from "lucide-react";
 
 export const itemsEmpleados = [
