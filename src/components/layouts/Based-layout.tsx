@@ -26,70 +26,72 @@ export default function BasedLayout({
 
   return (
     <SidebarProvider defaultOpen={true}>
-    <div className="flex h-screen w-full">
-      <AppSidebar />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <header className="bg-background border-b">
-          <div className="flex justify-between items-center p-4">
-            <SidebarTrigger className="lg:hidden flex" />
-            <div className="flex gap-4 items-center">
-              {role === 'admin' && (
-                <Select 
-                  onValueChange={handleRoleChange}
-                  value={role}
-                >
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Cambiar panel" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="admin">Panel Admin</SelectItem>
-                    <SelectItem value="instructor">Panel Instructor</SelectItem>
-                    <SelectItem value="empleado">Panel Empleado</SelectItem>
-                  </SelectContent>
-                </Select>
-              )}
-              
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div className="flex items-center gap-2 cursor-pointer">
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage src={`https://ui-avatars.com/api/?name=${user}&background=random`} />
-                      <AvatarFallback>{user?.charAt(0).toUpperCase()}</AvatarFallback>
-                    </Avatar>
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    Perfil
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    className="cursor-pointer" 
-                    onClick={toggleTheme}
+      <div className="flex h-screen w-full">
+        <AppSidebar />
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <header className="bg-background border-b">
+            <div className="flex justify-between items-center p-4">
+              <SidebarTrigger className="lg:hidden flex" />
+              <div className="flex gap-4 items-center">
+                {role === 'admin' && (
+                  <Select
+                    onValueChange={handleRoleChange}
+                    value={role}
                   >
-                    {theme === 'light' ? (
-                      <Moon className="mr-2 h-4 w-4" />
-                    ) : (
-                      <Sun className="mr-2 h-4 w-4" />
-                    )}
-                    {theme === 'light' ? 'Modo oscuro' : 'Modo claro'}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    className="cursor-pointer text-red-600 focus:text-red-600"
-                    onClick={logout}
-                  >
-                    Cerrar sesión
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Cambiar panel" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="admin">Panel Admin</SelectItem>
+                      <SelectItem value="instructor">Panel Instructor</SelectItem>
+                      <SelectItem value="empleado">Panel Empleado</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div className="flex items-center gap-2 cursor-pointer">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src={user ? `https://ui-avatars.com/api/?name=${user.username}&background=random` : ''} />
+                        <AvatarFallback>
+                          {user ? user.username.charAt(0).toUpperCase() : ''}
+                        </AvatarFallback>
+                      </Avatar>
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      Perfil
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="cursor-pointer"
+                      onClick={toggleTheme}
+                    >
+                      {theme === 'light' ? (
+                        <Moon className="mr-2 h-4 w-4" />
+                      ) : (
+                        <Sun className="mr-2 h-4 w-4" />
+                      )}
+                      {theme === 'light' ? 'Modo oscuro' : 'Modo claro'}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="cursor-pointer text-red-600 focus:text-red-600"
+                      onClick={logout}
+                    >
+                      Cerrar sesión
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
-          </div>
-        </header>
-        <main className="flex-1 overflow-auto p-4 lg:p-6">
-          {children}
-        </main>
+          </header>
+          <main className="flex-1 overflow-auto p-4 lg:p-6">
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
-  </SidebarProvider>
+    </SidebarProvider>
   );
 }

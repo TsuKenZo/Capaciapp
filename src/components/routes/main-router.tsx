@@ -14,6 +14,7 @@ import CalendarioPageI from '../Instructor/Calendario-page';
 import BasedLayout from "../layouts/Based-layout";
 import AdminUsuariosPage from "../Admin/admin-usuarios-page";
 import AsistenciaPage from "../Instructor/Asistencias-page";
+import AdminInstructorCursosPage from "../Admin/admin-instructor-cursos-page";
 import { JSX } from "react";
 
 export function MainRouter() {
@@ -56,6 +57,11 @@ export function MainRouter() {
         <Route path="/admin/gestionar_cursos" element={
           <ProtectedRoute roles={['admin']}>
             <AdminCursosPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/gestionar_instructores" element={
+          <ProtectedRoute roles={['admin']}>
+            <AdminInstructorCursosPage />
           </ProtectedRoute>
         } />
 
@@ -109,16 +115,16 @@ export function MainRouter() {
         <Route path="/" element={
           <Navigate to={
             role === 'admin' ? '/admin' :
-            role === 'instructor' ? '/instructor' : '/empleado'
+              role === 'instructor' ? '/instructor' : '/empleado'
           } />
         } />
         <Route path="*" element={
           <Navigate to={
             role === 'admin' ? '/admin' :
-            role === 'instructor' ? '/instructor' : '/empleado'
+              role === 'instructor' ? '/instructor' : '/empleado'
           } />
         } />
       </Route>
     </Routes>
   );
-  }
+}

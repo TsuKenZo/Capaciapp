@@ -1,6 +1,6 @@
-import { 
-  Home, 
-  Book, 
+import {
+  Home,
+  Book,
   Calendar,
   ClipboardList
 } from "lucide-react";
